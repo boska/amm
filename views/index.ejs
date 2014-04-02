@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<h1><%= title %></h1>
+		<form action="/create" method="post" accept-charset="utf-8">
+			<div class="input-group small">
+				<input type="text" class="form-control" name="content" placeholder="廣告內容">
+				<select name="media_name" class="form-control">
+					<option value="CTI">中天</option>
+					<option value="ETTV">東森</option>
+					<option value="NEXT">壹電視</option>
+				</select>
+				<br>
+				<input type="text" class="form-control" name="company_name" placeholder="廣告主名稱"/><br>
+				<input type="text" class="form-control" name="company_email" placeholder="廣告主email"/><br>
+				<input type="text" class="form-control" name="company_phone" placeholder="廣告主聯絡電話"/><br>
+				<input type="text" class="form-control" name="company_url" placeholder="廣告主網址"/><br>
+				<input type="text" class="form-control" name="respond" placeholder="廣告主回應"/><br>
+				<button type="submit" class="btn btn-default">提交</button>
+			</form>
+		</div>
+		<br>
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">廣告列表</div>
+			<div class="panel-body">
+				請針對有意見的媒體對於廣告主施壓(幫想這段),大概就是借由列出媒體的主要金主廣告
+				例如某某公司于中天刊登廣告你不爽中天所以聯絡廣告主說請不要再中天刊登廣告否則拒買拒用
+				當然正向的網站也請對企業支持希望人群的力量可改媒體的力量
+			</div>
+			<!-- Table -->
+			<table class="table">
+				<thead>
+					<tr>
+						<th>頻道</th>
+						<th>廣告內容</th>
+						<th>廣告主名稱</th>
+						<th>廣告主email</th>
+						<th>廣告主聯絡電話</th>
+						<th>廣告主網址</th>
+						<th>廣告主回應</th>
+						<th>更新時間</th>
+					</tr>
+				</thead>
+				<% ads.forEach( function( ad ){ %>
+				<tr>
+					<td><%= ad.media_name %></td>
+					<td><%= ad.content %></td>
+					<td><%= ad.company_name %></td>
+					<td><%= ad.company_email %></td>
+					<td><%= ad.company_phone %></td>
+					<td><%= ad.company_url %></td>
+					<td><%= ad.respond %></td>
+				</tr>
+				<% }); %>
+			</table>
+		</div>
+		
+	</body>
+</html>

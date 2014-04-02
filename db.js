@@ -13,4 +13,4 @@ var Ad = new Schema({
 });
 mongoose.model('Ad', Ad);
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/express-ad';
-mongoose.connect('mongoUri');
+mongoose.connect(mongoUri);
